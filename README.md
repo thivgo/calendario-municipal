@@ -1,4 +1,4 @@
-# 📅 Calendário SEAC-PA — Feriados e Pontos Facultativos 2026
+# 📅 Calendário do estado do pará — Feriados e Pontos Facultativos 2026
 
 Dashboard visual para consulta dos feriados e pontos facultativos do Governo do Estado do Pará para o ano de 2026.
 
