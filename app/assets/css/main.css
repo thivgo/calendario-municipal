@@ -1,0 +1,246 @@
+/* ============================================================
+   Calendário SEAC-PA — Design System
+   Desenvolvido por Thiago Maués, 2026
+   ============================================================ */
+
+/* ——— Light Mode ——— */
+:root {
+  /* Backgrounds */
+  --bg: hsl(220, 16%, 96%);
+  --surface: hsl(0, 0%, 100%);
+  --surface-raised: hsl(0, 0%, 100%);
+  --surface-hover: hsl(220, 14%, 95%);
+
+  /* Borders */
+  --border: hsl(220, 13%, 90%);
+  --border-subtle: hsl(220, 13%, 93%);
+
+  /* Text */
+  --text-primary: hsl(220, 20%, 12%);
+  --text-secondary: hsl(220, 8%, 46%);
+  --text-tertiary: hsl(220, 8%, 62%);
+
+  /* Semantic: Feriado */
+  --feriado: hsl(0, 65%, 52%);
+  --feriado-soft: hsl(0, 60%, 95%);
+  --feriado-text: hsl(0, 65%, 40%);
+
+  /* Semantic: Facultativo */
+  --facultativo: hsl(36, 85%, 50%);
+  --facultativo-soft: hsl(36, 80%, 94%);
+  --facultativo-text: hsl(36, 70%, 36%);
+
+  /* Accent */
+  --accent: hsl(220, 82%, 48%);
+  --accent-soft: hsl(220, 80%, 95%);
+  --accent-text: hsl(220, 82%, 40%);
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px hsl(220 20% 12% / 0.04);
+  --shadow-sm: 0 1px 3px hsl(220 20% 12% / 0.06), 0 1px 2px hsl(220 20% 12% / 0.04);
+  --shadow-md: 0 4px 12px hsl(220 20% 12% / 0.06), 0 1px 3px hsl(220 20% 12% / 0.04);
+  --shadow-lg: 0 8px 24px hsl(220 20% 12% / 0.08), 0 2px 6px hsl(220 20% 12% / 0.04);
+
+  /* Skeleton */
+  --skeleton: hsl(220, 13%, 91%);
+  --skeleton-shine: hsl(220, 13%, 96%);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Header */
+  --header-bg: hsl(0 0% 100% / 0.82);
+}
+
+/* ——— Dark Mode ——— */
+.dark {
+  --bg: hsl(220, 18%, 7%);
+  --surface: hsl(220, 16%, 11%);
+  --surface-raised: hsl(220, 14%, 14%);
+  --surface-hover: hsl(220, 14%, 16%);
+
+  --border: hsl(220, 12%, 20%);
+  --border-subtle: hsl(220, 12%, 16%);
+
+  --text-primary: hsl(220, 15%, 90%);
+  --text-secondary: hsl(220, 8%, 56%);
+  --text-tertiary: hsl(220, 8%, 42%);
+
+  --feriado: hsl(0, 65%, 64%);
+  --feriado-soft: hsl(0, 40%, 14%);
+  --feriado-text: hsl(0, 60%, 72%);
+
+  --facultativo: hsl(36, 80%, 58%);
+  --facultativo-soft: hsl(36, 40%, 14%);
+  --facultativo-text: hsl(36, 70%, 66%);
+
+  --accent: hsl(220, 80%, 62%);
+  --accent-soft: hsl(220, 50%, 14%);
+  --accent-text: hsl(220, 70%, 72%);
+
+  --shadow-xs: 0 1px 2px hsl(0 0% 0% / 0.2);
+  --shadow-sm: 0 1px 3px hsl(0 0% 0% / 0.3), 0 1px 2px hsl(0 0% 0% / 0.2);
+  --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.3), 0 1px 3px hsl(0 0% 0% / 0.2);
+  --shadow-lg: 0 8px 24px hsl(0 0% 0% / 0.4), 0 2px 6px hsl(0 0% 0% / 0.2);
+
+  --skeleton: hsl(220, 14%, 15%);
+  --skeleton-shine: hsl(220, 14%, 20%);
+
+  --header-bg: hsl(220 18% 7% / 0.82);
+}
+
+/* ——— Reset & Base ——— */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* ——— Typography ——— */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+/* ——— Focus ——— */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ——— Scrollbar ——— */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ——— Skeleton Shimmer ——— */
+.skeleton {
+  background: linear-gradient(
+    100deg,
+    var(--skeleton) 40%,
+    var(--skeleton-shine) 50%,
+    var(--skeleton) 60%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* ——— Entrance Animation ——— */
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-enter {
+  animation: enter 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.stagger-1 { animation-delay: 50ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 150ms; }
+.stagger-4 { animation-delay: 200ms; }
+.stagger-5 { animation-delay: 250ms; }
+
+/* ——— Tooltip ——— */
+.tooltip {
+  position: fixed;
+  z-index: 100;
+  padding: 6px 10px;
+  background: var(--text-primary);
+  color: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-50%);
+  line-height: 1.4;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--text-primary);
+}
+
+/* ——— Progress Bar ——— */
+.progress-track {
+  height: 3px;
+  border-radius: 100px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ——— Utility ——— */
+.capitalize {
+  text-transform: capitalize;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
