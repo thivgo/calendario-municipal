@@ -59,60 +59,6 @@ const tipoStatus = computed(() => {
 
 <template>
   <div class="page">
-    <!-- ===== HERO — STATUS DE HOJE ===== -->
-    <section id="status-hoje" aria-label="Status do dia atual" role="status">
-      <!-- Skeleton -->
-      <div v-if="loading" class="hero hero--loading">
-        <div class="hero__left">
-          <div class="skeleton" style="width: 48px; height: 16px; margin-bottom: 12px"></div>
-          <div class="skeleton" style="width: 120px; height: 80px; margin-bottom: 8px"></div>
-          <div class="skeleton" style="width: 80px; height: 20px"></div>
-        </div>
-        <div class="hero__right">
-          <div class="skeleton" style="width: 220px; height: 16px; margin-bottom: 8px"></div>
-          <div class="skeleton" style="width: 180px; height: 14px"></div>
-        </div>
-      </div>
-
-      <!-- Real content -->
-      <div
-        v-else
-        class="hero animate-enter"
-        :class="`hero--${tipoStatus}`"
-        :style="{ opacity: 0 }"
-      >
-        <div class="hero__left">
-          <span class="hero__badge" :class="`hero__badge--${tipoStatus}`">
-            {{ labelStatus }}
-          </span>
-          <div class="hero__day">{{ diaNumero }}</div>
-          <div class="hero__month capitalize">{{ mesAtual }}</div>
-        </div>
-
-        <div class="hero__right">
-          <p class="hero__date capitalize">{{ dataCompleta }}</p>
-          <p v-if="statusHoje.descricao" class="hero__description">
-            {{ statusHoje.descricao }}
-          </p>
-          <p v-else-if="statusHoje.ehFimDeSemana" class="hero__description hero__description--muted">
-            Fim de semana. Aproveite o descanso!
-          </p>
-          <p v-else class="hero__description hero__description--muted">
-            Este é um dia normal de trabalho.
-          </p>
-        </div>
-
-        <!-- Decorative element -->
-        <div class="hero__decoration" aria-hidden="true">
-          <svg width="180" height="180" viewBox="0 0 180 180" fill="none">
-            <circle cx="90" cy="90" r="88" stroke="currentColor" stroke-width="0.5" opacity="0.07" />
-            <circle cx="90" cy="90" r="60" stroke="currentColor" stroke-width="0.5" opacity="0.05" />
-            <circle cx="90" cy="90" r="32" stroke="currentColor" stroke-width="0.5" opacity="0.03" />
-          </svg>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== Erro ===== -->
     <div v-if="error" class="error-banner" role="alert">
       <div class="error-banner__content">
@@ -128,10 +74,66 @@ const tipoStatus = computed(() => {
       </button>
     </div>
 
-    <!-- ===== CONTEÚDO: Eventos + Calendário ===== -->
+    <!-- ===== CONTEÚDO: Dashboard + Calendário ===== -->
     <div class="content-grid">
-      <!-- Próximos Eventos -->
+      <!-- Sidebar Fixa (Hero + Próximos Eventos) -->
       <aside class="content-grid__sidebar">
+        
+        <!-- ===== HERO — STATUS DE HOJE ===== -->
+        <section id="status-hoje" aria-label="Status do dia atual" role="status">
+          <!-- Skeleton -->
+          <div v-if="loading" class="hero hero--loading">
+            <div class="hero__left">
+              <div class="skeleton" style="width: 48px; height: 16px; margin-bottom: 12px"></div>
+              <div class="skeleton" style="width: 120px; height: 80px; margin-bottom: 8px"></div>
+              <div class="skeleton" style="width: 80px; height: 20px"></div>
+            </div>
+            <div class="hero__right">
+              <div class="skeleton" style="width: 220px; height: 16px; margin-bottom: 8px"></div>
+              <div class="skeleton" style="width: 180px; height: 14px"></div>
+            </div>
+          </div>
+
+          <!-- Real content -->
+          <div
+            v-else
+            class="hero animate-enter"
+            :class="`hero--${tipoStatus}`"
+            :style="{ opacity: 0 }"
+          >
+            <div class="hero__left">
+              <span class="hero__badge" :class="`hero__badge--${tipoStatus}`">
+                {{ labelStatus }}
+              </span>
+              <div class="hero__day">{{ diaNumero }}</div>
+              <div class="hero__month capitalize">{{ mesAtual }}</div>
+            </div>
+
+            <div class="hero__right">
+              <p class="hero__date capitalize">{{ dataCompleta }}</p>
+              <p v-if="statusHoje.descricao" class="hero__description">
+                {{ statusHoje.descricao }}
+              </p>
+              <p v-else-if="statusHoje.ehFimDeSemana" class="hero__description hero__description--muted">
+                Fim de semana. Aproveite o descanso!
+              </p>
+              <p v-else class="hero__description hero__description--muted">
+                Este é um dia normal de trabalho.
+              </p>
+            </div>
+
+            <!-- Decorative element -->
+            <div class="hero__decoration" aria-hidden="true">
+              <svg width="180" height="180" viewBox="0 0 180 180" fill="none">
+                <circle cx="90" cy="90" r="88" stroke="currentColor" stroke-width="0.5" opacity="0.07" />
+                <circle cx="90" cy="90" r="60" stroke="currentColor" stroke-width="0.5" opacity="0.05" />
+                <circle cx="90" cy="90" r="32" stroke="currentColor" stroke-width="0.5" opacity="0.03" />
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- Próximos Eventos -->
         <ProximosEventos
           :eventos="proximos"
           :loading="loading"
@@ -170,27 +172,17 @@ const tipoStatus = computed(() => {
 }
 
 /* === Hero Status Card === */
-.hero {
+.hero, .hero--loading {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 2.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
   background: var(--surface);
   border-radius: var(--radius-xl);
-  padding: 2.5rem 3rem;
+  padding: 1.75rem 1.5rem;
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.hero--loading {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  background: var(--surface);
-  border-radius: var(--radius-xl);
-  padding: 2.5rem 3rem;
-  box-shadow: var(--shadow-sm);
   margin-bottom: 2rem;
 }
 
@@ -364,13 +356,6 @@ const tipoStatus = computed(() => {
 @media (max-width: 640px) {
   .page {
     padding: 1.25rem 1rem;
-  }
-
-  .hero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1.75rem 1.5rem;
   }
 
   .hero__decoration {

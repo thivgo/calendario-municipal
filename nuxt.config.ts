@@ -12,7 +12,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Calendário SEAC-PA — Feriados e Pontos Facultativos 2026',
+      title: 'Calendário do Pará — Feriados e Pontos Facultativos 2026',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

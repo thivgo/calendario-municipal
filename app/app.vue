@@ -30,7 +30,7 @@
               <line x1="8" y1="2" x2="8" y2="6" />
               <line x1="3" y1="10" x2="21" y2="10" />
             </svg>
-            <span class="header__logo-text">SEAC-PA</span>
+            <span class="header__logo-text">Calendário do Pará</span>
           </h1>
           <p class="header__subtitle">Feriados e Pontos Facultativos · 2026</p>
         </div>
